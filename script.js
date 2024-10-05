@@ -1,5 +1,7 @@
 
 
+
+
 async function getWeatherDataFromApi(city) {
     const apiKey = "XT56GNF3GWHBFCPHT2D7PFWTF";
 
@@ -9,9 +11,9 @@ async function getWeatherDataFromApi(city) {
         throw new Error("Error in fetching data from api!")
     }
 
-    const data = await response.json();
+    await response.json().then((response) => console.log(response));
 
-    return data;
+
 }
 
 
