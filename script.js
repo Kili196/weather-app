@@ -1,4 +1,7 @@
+function createWeatherObject(weatherJson) {
+    return ({ "city": weatherJson.resolvedAddress, "desc": weatherJson.description, "curr_conditions": weatherJson.currentConditions.conditions, "humidity": weatherJson.currentConditions.humidity })
 
+}
 
 
 
@@ -10,11 +13,18 @@ async function getWeatherDataFromApi(city) {
     if (!response.ok) {
         throw new Error("Error in fetching data from api!")
     }
-
-    await response.json().then((response) => console.log(response));
-
-
+    const data = createWeatherObject(await response.json());
+    return data;
 }
 
+async function showWeather() {
+    const data = await getWeatherDataFromApi("London");
+    console.log(data)
+}
 
-console.log(getWeatherDataFromApi("london"));
+showWeather();
+
+
+
+
+
