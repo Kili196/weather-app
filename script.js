@@ -18,8 +18,13 @@ async function getWeatherDataFromApi(city) {
 }
 
 async function showWeather() {
-    const data = await getWeatherDataFromApi("London");
-    console.log(data)
+    try {
+        const data = await getWeatherDataFromApi("London");
+        console.log(data)
+    } catch (error) {
+        console.error(error);
+    }
+
 }
 
 showWeather();
