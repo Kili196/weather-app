@@ -65,4 +65,12 @@ body {
   height: 320px;
   background-color: var(--card-background);
   border-radius: 30px;
+  position: relative;
+}
+
+.weather-component img {
+  position: absolute;
+  left: -90px;
+  top: -50%;
+  height: 280px;
 }
