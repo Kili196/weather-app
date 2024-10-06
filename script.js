@@ -13,7 +13,10 @@ async function getWeatherDataFromApi(city) {
     if (!response.ok) {
         throw new Error("Error in fetching data from api!")
     }
+    console.log(response.json());
+
     const data = createWeatherObject(await response.json());
+
     return data;
 }
 
