@@ -1,8 +1,34 @@
+function getDom() {
+    const container = document.querySelector('.container');
+    const searchBar = document.querySelector('.search-bar');
+    const weatherView = document.querySelector('.weather-view');
+    const headings = document.querySelectorAll('h1');
+
+    return {
+        container,
+        searchBar,
+        weatherView,
+        headings
+    };
+}
+
+
+
 function createWeatherObject(weatherJson) {
     return ({ "city": weatherJson.resolvedAddress, "desc": weatherJson.description, "curr_conditions": weatherJson.currentConditions.conditions, "humidity": weatherJson.currentConditions.humidity })
 
 }
 
+
+function inputFieldFunction() {
+    const domElements = getDom();
+
+    domElements.searchBar.addEventListener("keydown", (event) => {
+        if (event.key === 'Enter') {
+            showWeather(domElements.searchBar.value);
+        }
+    })
+}
 
 
 async function getWeatherDataFromApi(city) {
@@ -13,16 +39,16 @@ async function getWeatherDataFromApi(city) {
     if (!response.ok) {
         throw new Error("Error in fetching data from api!")
     }
-    console.log(response.json());
+
 
     const data = createWeatherObject(await response.json());
 
     return data;
 }
 
-async function showWeather() {
+async function showWeather(city) {
     try {
-        const data = await getWeatherDataFromApi("London");
+        const data = await getWeatherDataFromApi(city);
         console.log(data)
     } catch (error) {
         console.error(error);
@@ -30,7 +56,9 @@ async function showWeather() {
 
 }
 
-showWeather();
+inputFieldFunction();
+
+
 
 
 
