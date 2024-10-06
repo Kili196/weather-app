@@ -3,6 +3,7 @@
 :root {
   --main-background: #051923;
   --card-background: #0f2338;
+  --input-background: #2a3f54;
 }
 
 * {
@@ -29,4 +30,18 @@ body {
 
 .container h1 {
   color: white;
+  font-weight: 700;
+}
+
+.search-bar {
+  height: 30px;
+  width: 500px;
+  border-radius: 20px;
+  background-color: var(--input-background);
+  outline: none;
+  border: 0px;
+  color: white;
+  padding: 7px;
+  font-size: 1.2rem;
+  margin: 15px;
 }
