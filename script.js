@@ -1,3 +1,7 @@
+import useSpinner from 'use-spinner';
+
+import 'use-spinner/assets/use-spinner.css';
+
 function getDom() {
     const container = document.querySelector('.container');
     const searchBar = document.querySelector('.search-bar');
