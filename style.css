@@ -26,7 +26,7 @@ body {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 80%;
+  height: 60%;
 }
 
 .container h1 {
@@ -61,16 +61,39 @@ body {
 }
 
 .weather-component {
-  width: 320px;
-  height: 320px;
+  width: 370px;
+  height: 370px;
   background-color: var(--card-background);
   border-radius: 30px;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .weather-component img {
   position: absolute;
-  left: -90px;
-  top: -50%;
-  height: 280px;
+  left: -70px;
+  top: -25%;
+  height: 200px;
+}
+
+.weather-component h1 {
+  font-size: 2.2rem;
+  justify-content: end;
+  margin: 20px;
+  display: flex;
+}
+
+.weather-information {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 1.5rem;
+  gap: 20px;
+  color: white;
+}
+
+.weather-information p {
+  font-weight: 800;
 }
