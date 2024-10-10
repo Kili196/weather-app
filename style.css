@@ -96,6 +96,6 @@ body {
   color: white;
 }
 
-.weather-information p {
-  font-weight: 800;
+.weather-description {
+  font-weight: 700;
 }
