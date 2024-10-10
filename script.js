@@ -89,6 +89,14 @@ function generateWeatherComponent(day, temperature, humidity, windspeed, imgSrc 
 
 }
 
+function renderWeatherComponents(data) {
+
+    console.log(data);
+    for (let i = 0; i < 3; i++) {
+        generateWeatherComponent("Today", data.days[i].temp, data.days[i].humidity, data.days[i].windSpeed);
+    }
+}
+
 
 
 function createWeatherObject(weatherJson) {
@@ -100,19 +108,19 @@ function createWeatherObject(weatherJson) {
                 "conditions": weatherJson.days[0].conditions,
                 "humidity": weatherJson.days[0].humidity,
                 "temp": weatherJson.days[0].temp,
-                "wind-speed": weatherJson.days[0].windspeed,
+                "windSpeed": weatherJson.days[0].windspeed,
             },
             "1": {
                 "conditions": weatherJson.days[1].conditions,
                 "humidity": weatherJson.days[1].humidity,
                 "temp": weatherJson.days[1].temp,
-                "wind-speed": weatherJson.days[1].windspeed,
+                "windSpeed": weatherJson.days[1].windspeed,
             },
             "2": {
                 "conditions": weatherJson.days[2].conditions,
                 "humidity": weatherJson.days[2].humidity,
                 "temp": weatherJson.days[2].temp,
-                "wind-speed": weatherJson.days[2].windspeed,
+                "windSpeed": weatherJson.days[2].windspeed,
             },
 
         }
@@ -127,8 +135,7 @@ function inputFieldFunction() {
     domElements.searchBar.addEventListener("keydown", (event) => {
         if (event.key === 'Enter') {
             console.log(domElements.searchedLocation[0]);
-            domElements.searchedLocation[0].textContent = domElements.searchBar.value;
-            console.log(domElements.searchView);
+
             domElements.searchView[0].textContent = "";
             showWeather(domElements.searchBar.value, domElements);
         }
@@ -156,9 +163,9 @@ async function getWeatherDataFromApi(city) {
 async function showWeather(city, domElements) {
     try {
         const data = await getWeatherDataFromApi(city);
-        console.log(data);
-
         domElements.weatherPrediction[0].textContent = data.desc;
+        domElements.searchedLocation[0].textContent = data.city;
+        renderWeatherComponents(data);
     } catch (error) {
         console.error(error);
     }
@@ -168,9 +175,6 @@ async function showWeather(city, domElements) {
 inputFieldFunction();
 
 
-generateWeatherComponent("TODAY", 20, 30, 10);
-generateWeatherComponent("WEDNESDAY", 20, 30, 10);
-generateWeatherComponent("FRIDAY", 20, 30, 10);
 
 
 
