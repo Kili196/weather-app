@@ -17,7 +17,31 @@ function getDom() {
 
 
 function createWeatherObject(weatherJson) {
-    return ({ "city": weatherJson.resolvedAddress, "desc": weatherJson.description, "curr_conditions": weatherJson.currentConditions.conditions, "humidity": weatherJson.currentConditions.humidity })
+
+
+    return ({
+        "city": weatherJson.resolvedAddress, "desc": weatherJson.description, "days": {
+            "0": {
+                "conditions": weatherJson.days[0].conditions,
+                "humidity": weatherJson.days[0].humidity,
+                "temp": weatherJson.days[0].temp,
+                "wind-speed": weatherJson.days[0].windspeed,
+            },
+            "1": {
+                "conditions": weatherJson.days[1].conditions,
+                "humidity": weatherJson.days[1].humidity,
+                "temp": weatherJson.days[1].temp,
+                "wind-speed": weatherJson.days[1].windspeed,
+            },
+            "2": {
+                "conditions": weatherJson.days[2].conditions,
+                "humidity": weatherJson.days[2].humidity,
+                "temp": weatherJson.days[2].temp,
+                "wind-speed": weatherJson.days[2].windspeed,
+            },
+
+        }
+    })
 
 }
 
@@ -41,6 +65,8 @@ async function getWeatherDataFromApi(city) {
     if (!response.ok) {
         throw new Error("Error in fetching data from api!")
     }
+
+
 
 
     const data = createWeatherObject(await response.json());
