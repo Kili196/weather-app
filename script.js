@@ -7,6 +7,7 @@ function getDom() {
     const headings = document.querySelectorAll('h1');
     const searchedLocation = document.getElementsByClassName("searched-location");
     const weatherPrediction = document.getElementsByClassName("weather-prediction");
+    const searchView = document.getElementsByClassName("search-view");
 
 
     return {
@@ -15,7 +16,8 @@ function getDom() {
         weatherView,
         headings,
         searchedLocation,
-        weatherPrediction
+        weatherPrediction,
+        searchView
     };
 }
 
@@ -126,6 +128,8 @@ function inputFieldFunction() {
         if (event.key === 'Enter') {
             console.log(domElements.searchedLocation[0]);
             domElements.searchedLocation[0].textContent = domElements.searchBar.value;
+            console.log(domElements.searchView);
+            domElements.searchView[0].textContent = "";
             showWeather(domElements.searchBar.value, domElements);
         }
     })
