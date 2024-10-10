@@ -99,3 +99,9 @@ body {
 .weather-description {
   font-weight: 700;
 }
+
+.searched-location {
+  margin-bottom: 100px;
+  margin-top: 10px;
+  font-size: 2rem;
+}

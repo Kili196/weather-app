@@ -5,12 +5,17 @@ function getDom() {
     const searchBar = document.querySelector('.search-bar');
     const weatherView = document.querySelector('.weather-view');
     const headings = document.querySelectorAll('h1');
+    const searchedLocation = document.getElementsByClassName("searched-location");
+    const weatherPrediction = document.getElementsByClassName("weather-prediction");
+
 
     return {
         container,
         searchBar,
         weatherView,
-        headings
+        headings,
+        searchedLocation,
+        weatherPrediction
     };
 }
 
@@ -119,7 +124,9 @@ function inputFieldFunction() {
 
     domElements.searchBar.addEventListener("keydown", (event) => {
         if (event.key === 'Enter') {
-            showWeather(domElements.searchBar.value);
+            console.log(domElements.searchedLocation[0]);
+            domElements.searchedLocation[0].textContent = domElements.searchBar.value;
+            showWeather(domElements.searchBar.value, domElements);
         }
     })
 }
@@ -142,10 +149,12 @@ async function getWeatherDataFromApi(city) {
     return data;
 }
 
-async function showWeather(city) {
+async function showWeather(city, domElements) {
     try {
         const data = await getWeatherDataFromApi(city);
-        console.log(data)
+        console.log(data);
+
+        domElements.weatherPrediction[0].textContent = data.desc;
     } catch (error) {
         console.error(error);
     }
