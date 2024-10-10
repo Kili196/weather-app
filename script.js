@@ -14,6 +14,74 @@ function getDom() {
     };
 }
 
+function generateWeatherComponent(day, temperature, humidity, windspeed, imgSrc = "/images/thunderstorm.png") {
+    // Container für das Wetter-Component erstellen
+    const weatherComponent = document.createElement('div');
+    weatherComponent.classList.add('weather-component');
+
+    // Bild hinzufügen
+    const weatherImage = document.createElement('img');
+    weatherImage.src = imgSrc;
+    weatherComponent.appendChild(weatherImage);
+
+    // Überschrift
+    const heading = document.createElement('h1');
+    heading.textContent = day;
+    weatherComponent.appendChild(heading);
+
+    // Wetterinformationen Container
+    const weatherInformation = document.createElement('div');
+    weatherInformation.classList.add('weather-information');
+
+    // Temperatur
+    const temperatureDiv = document.createElement('div');
+    temperatureDiv.classList.add('information');
+    const tempLabel = document.createElement('label');
+    tempLabel.classList.add('weather-description');
+    tempLabel.textContent = 'Temperature: ';
+    const tempValue = document.createElement('label');
+    tempValue.setAttribute('id', 'temperature-value');
+    tempValue.textContent = `${temperature}°`;
+    temperatureDiv.appendChild(tempLabel);
+    temperatureDiv.appendChild(tempValue);
+    weatherInformation.appendChild(temperatureDiv);
+
+    // Luftfeuchtigkeit
+    const humidityDiv = document.createElement('div');
+    humidityDiv.classList.add('information');
+    const humidityLabel = document.createElement('label');
+    humidityLabel.classList.add('weather-description');
+    humidityLabel.textContent = 'Humidity: ';
+    const humidityValue = document.createElement('label');
+    humidityValue.setAttribute('id', 'humidity-value');
+    humidityValue.textContent = `${humidity}%`;
+    humidityDiv.appendChild(humidityLabel);
+    humidityDiv.appendChild(humidityValue);
+    weatherInformation.appendChild(humidityDiv);
+
+    // Windgeschwindigkeit
+    const windspeedDiv = document.createElement('div');
+    windspeedDiv.classList.add('information');
+    const windspeedLabel = document.createElement('label');
+    windspeedLabel.classList.add('weather-description');
+    windspeedLabel.textContent = 'Windspeed: ';
+    const windspeedValue = document.createElement('label');
+    windspeedValue.setAttribute('id', 'windspeed-value');
+    windspeedValue.textContent = `${windspeed} km/h`;
+    windspeedDiv.appendChild(windspeedLabel);
+    windspeedDiv.appendChild(windspeedValue);
+    weatherInformation.appendChild(windspeedDiv);
+
+    // Wetterinformationen zum Hauptcomponent hinzufügen
+    weatherComponent.appendChild(weatherInformation);
+
+
+    const weatherView = document.querySelector('.weather-view');
+
+    weatherView.appendChild(weatherComponent);
+
+}
+
 
 
 function createWeatherObject(weatherJson) {
@@ -85,6 +153,11 @@ async function showWeather(city) {
 }
 
 inputFieldFunction();
+
+
+generateWeatherComponent("TODAY", 20, 30, 10);
+generateWeatherComponent("WEDNESDAY", 20, 30, 10);
+generateWeatherComponent("FRIDAY", 20, 30, 10);
 
 
 
