@@ -1,4 +1,10 @@
+const weatherImages = {
+    "Rain, Partially cloudy": "/images/raining.png",
+    "Partially cloudy": "/images/partial-cloudy.png",
+    "Clear": "/images/sunny.png",
+    "Overcast": "/images/cloudy.png",
 
+}
 
 function getDom() {
     const container = document.querySelector('.container');
@@ -21,7 +27,7 @@ function getDom() {
     };
 }
 
-function generateWeatherComponent(day, temperature, humidity, windspeed, imgSrc = "/images/thunderstorm.png") {
+function generateWeatherComponent(day, temperature, humidity, windspeed, imgSrc) {
     // Container für das Wetter-Component erstellen
     const weatherComponent = document.createElement('div');
     weatherComponent.classList.add('weather-component');
@@ -91,9 +97,10 @@ function generateWeatherComponent(day, temperature, humidity, windspeed, imgSrc 
 
 function renderWeatherComponents(data) {
 
-    console.log(data);
+
     for (let i = 0; i < 3; i++) {
-        generateWeatherComponent("Today", data.days[i].temp, data.days[i].humidity, data.days[i].windSpeed);
+        const condition = data.days[i].conditions;
+        generateWeatherComponent("Today", data.days[i].temp, data.days[i].humidity, data.days[i].windSpeed, weatherImages[condition]);
     }
 }
 
@@ -156,6 +163,7 @@ async function getWeatherDataFromApi(city) {
 
 
     const data = createWeatherObject(await response.json());
+    console.log(data);
 
     return data;
 }
