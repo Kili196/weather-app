@@ -1,8 +1,8 @@
 const weatherImages = {
-    "Rain, Partially cloudy": "/images/raining.png",
-    "Partially cloudy": "/images/partial-cloudy.png",
-    "Clear": "/images/sunny.png",
-    "Overcast": "/images/cloudy.png",
+    "Rain, Partially cloudy": "/images/Rainy.svg",
+    "Partially cloudy": "/images/PartlyCloudy.svg",
+    "Clear": "/images/Sunny.svg",
+    "Overcast": "/images/overcast.svg",
 
 }
 
