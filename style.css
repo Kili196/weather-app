@@ -106,6 +106,12 @@ body {
 
 .weather-prediction {
   margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--input-background);
+  border-radius: 20px;
+  margin-bottom: 100px;
 }
 
 .searched-location-container {
