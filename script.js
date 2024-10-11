@@ -3,8 +3,11 @@ const weatherImages = {
     "Partially cloudy": "/images/PartlyCloudy.svg",
     "Clear": "/images/Sunny.svg",
     "Overcast": "/images/overcast.svg",
+    "Rain, Overcast": "/images/Rainy.svg"
 
 }
+
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 function getDom() {
     const container = document.querySelector('.container');
@@ -96,11 +99,9 @@ function generateWeatherComponent(day, temperature, humidity, windspeed, imgSrc)
 }
 
 function renderWeatherComponents(data) {
-
-
     for (let i = 0; i < 3; i++) {
-        const condition = data.days[i].conditions;
-        generateWeatherComponent("Today", ((data.days[i].temp - 32) * 5 / 9).toFixed(1), data.days[i].humidity, data.days[i].windSpeed, weatherImages[condition]);
+
+        generateWeatherComponent(days[new Date(data.days[i].dateTime).getDay()].toUpperCase(), ((data.days[i].temp - 32) * 5 / 9).toFixed(1), data.days[i].humidity, data.days[i].windSpeed, weatherImages[data.days[i].conditions]);
     }
 }
 
@@ -108,22 +109,27 @@ function renderWeatherComponents(data) {
 
 function createWeatherObject(weatherJson) {
 
+    console.log(weatherJson);
+
 
     return ({
         "city": weatherJson.resolvedAddress, "desc": weatherJson.description, "days": {
             "0": {
+                "dateTime": weatherJson.days[0].datetime,
                 "conditions": weatherJson.days[0].conditions,
                 "humidity": weatherJson.days[0].humidity,
                 "temp": weatherJson.days[0].temp,
                 "windSpeed": weatherJson.days[0].windspeed,
             },
             "1": {
+                "dateTime": weatherJson.days[1].datetime,
                 "conditions": weatherJson.days[1].conditions,
                 "humidity": weatherJson.days[1].humidity,
                 "temp": weatherJson.days[1].temp,
                 "windSpeed": weatherJson.days[1].windspeed,
             },
             "2": {
+                "dateTime": weatherJson.days[2].datetime,
                 "conditions": weatherJson.days[2].conditions,
                 "humidity": weatherJson.days[2].humidity,
                 "temp": weatherJson.days[2].temp,
