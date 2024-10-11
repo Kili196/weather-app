@@ -100,7 +100,7 @@ function renderWeatherComponents(data) {
 
     for (let i = 0; i < 3; i++) {
         const condition = data.days[i].conditions;
-        generateWeatherComponent("Today", data.days[i].temp, data.days[i].humidity, data.days[i].windSpeed, weatherImages[condition]);
+        generateWeatherComponent("Today", ((data.days[i].temp - 32) * 5 / 9).toFixed(1), data.days[i].humidity, data.days[i].windSpeed, weatherImages[condition]);
     }
 }
 
