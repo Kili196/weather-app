@@ -27,7 +27,7 @@ body {
   justify-content: space-around;
   align-items: center;
   height: 60%;
-  width: 70%;
+  width: min(1100px, 50%);
 }
 
 .container h1 {
