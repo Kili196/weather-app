@@ -26,8 +26,8 @@ body {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 60%;
-  width: min(1100px, 50%);
+  height: max(800px, 70%);
+  width: min(1400px, 80%);
 }
 
 .container h1 {
