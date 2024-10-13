@@ -100,7 +100,6 @@ function generateWeatherComponent(day, temperature, humidity, windspeed, imgSrc)
 
 function renderWeatherComponents(data) {
     for (let i = 0; i < 3; i++) {
-
         generateWeatherComponent(days[new Date(data.days[i].dateTime).getDay()].toUpperCase(), ((data.days[i].temp - 32) * 5 / 9).toFixed(1), data.days[i].humidity, data.days[i].windSpeed, weatherImages[data.days[i].conditions]);
     }
 }
@@ -108,9 +107,6 @@ function renderWeatherComponents(data) {
 
 
 function createWeatherObject(weatherJson) {
-
-    console.log(weatherJson);
-
 
     return ({
         "city": weatherJson.resolvedAddress, "desc": weatherJson.description, "days": {
@@ -147,7 +143,6 @@ function inputFieldFunction() {
 
     domElements.searchBar.addEventListener("keydown", (event) => {
         if (event.key === 'Enter') {
-            console.log(domElements.searchedLocation[0]);
 
             domElements.searchView[0].textContent = "";
             showWeather(domElements.searchBar.value, domElements);
@@ -169,7 +164,7 @@ async function getWeatherDataFromApi(city) {
 
 
     const data = createWeatherObject(await response.json());
-    console.log(data);
+
 
     return data;
 }

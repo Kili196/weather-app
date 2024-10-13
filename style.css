@@ -27,6 +27,7 @@ body {
   justify-content: space-around;
   align-items: center;
   height: 60%;
+  width: 70%;
 }
 
 .container h1 {
@@ -59,6 +60,8 @@ body {
 .weather-view {
   display: flex;
   gap: 90px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .weather-component {
@@ -104,9 +107,10 @@ body {
   font-size: 2rem;
 }
 
+.searched-location-container,
 .weather-prediction {
-  margin-top: 30px;
   width: 100%;
+  max-width: 1500px;
   display: flex;
   justify-content: center;
   background-color: var(--input-background);
@@ -114,11 +118,6 @@ body {
   margin-bottom: 100px;
 }
 
-.searched-location-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: var(--input-background);
-  border-radius: 20px;
-  margin-bottom: 100px;
+.weather-prediction {
+  margin-top: 20px;
 }
